@@ -6,15 +6,18 @@ use app\core\BaseModel;
 
 class UsersModel extends BaseModel
 {
-    public function addNewUser($username, $login, $password)
+    public function addNewUser($username, $login, $password, $avatar)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
+        $avatar = file_get_contents($avatar);
+        $avatar = base64_encode($avatar);
         return $this->insert(
-            "INSERT INTO users (username, login, password) VALUES (:username, :login, :password)",
+            "INSERT INTO users (username, login, password, avatar) VALUES (:username, :login, :password, :avatar)",
             [
                 'username' => $username,
                 'login' => $login,
                 'password' => $password,
+                'avatar' => $avatar,
             ]
         );
     }

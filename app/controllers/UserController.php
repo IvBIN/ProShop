@@ -73,6 +73,11 @@ class UserController extends InitController
             $login = !empty($_POST['login']) ? $_POST['login'] : null;
             $password = !empty($_POST['password']) ? $_POST['password'] : null;
             $confirm_password = !empty($_POST['confirm_password']) ? $_POST['confirm_password'] : null;
+            $avatar = !empty($_FILES['avatar']['tmp_name']) ? $_FILES['avatar']['tmp_name'] : null;
+
+//            $avatar = file_get_contents($avatar);
+//            $avatar = base64_encode($avatar);
+
             if (empty($username)) {
                 $error_message .= "Введите ваше имя ! <br>";
             }
@@ -88,9 +93,12 @@ class UserController extends InitController
             if ($password != $confirm_password) {
                 $error_message .= "Пароли не совпадают ! <br>";
             }
+            if (empty($avatar)) {
+                $error_message .= "Аватар отсутствует ! <br>";
+            }
             if (empty($error_message)) {
                 $userModel = new UsersModel();
-                $user_id = $userModel->addNewUser($username, $login, $password);
+                $user_id = $userModel->addNewUser($username, $login, $password, $avatar);
                 if (!empty($user_id)) {
                     $this->redirect('/user/profile');
                 }

@@ -72,6 +72,9 @@
 
                         </div>
                     </div>
+                    <div class="avatar">
+                        <img src="data:<?= $users[0]['type']?>;base64, <?=$users[0]['avatar']?>" alt="avatar">
+                    </div>
                 </div>
             </div>
         </div>

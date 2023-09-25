@@ -5,7 +5,7 @@
     <div class="container">
         <div class="auth_block">
             <h1 class="title">Регистрация</h1>
-            <form name="auth_form" method="post">
+            <form name="auth_form" method="post" enctype="multipart/form-data">
                 <div class="auth_form">
 
                     <div class="alert alert-danger <?= !empty($error_message) ? null : 'hidden' ?>">
@@ -53,6 +53,17 @@
                                id="field_confirm_password"
                                class="form-control"
                                placeholder="Повторите пароль"
+                        >
+                    </div>
+
+                    <div class="input_box">
+                        <label for="avatar">Добавьте аватар</label>
+                        <input type="file"
+                               name="avatar"
+                               id="field_avatar"
+                               class="form-control"
+                               maxlength="24"
+                               placeholder="Добавьте аватар"
                         >
                     </div>
 
