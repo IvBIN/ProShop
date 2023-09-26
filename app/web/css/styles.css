@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     outline: none;
+
 }
 
 html {
@@ -75,6 +76,11 @@ textarea{
 }
 
 /*cabinet*/
+/*.container {*/
+/*    width: 720px;*/
+/*    background: orange;*/
+/*}*/
+
 .cabinet_wrapped {
     display: flex;
     flex-wrap: wrap;
@@ -120,6 +126,11 @@ textarea{
     text-decoration: underline;
 }
 
+/*.cabinet_content {*/
+/*    width: 720px;*/
+/*}*/
+
+
 .page-content-inner{
     display: block;
     border: 3px solid #002360;
@@ -133,6 +144,13 @@ textarea{
     font-size: 24px;
     line-height: 26px;
     text-align: center;
+}
+
+.avatar {
+    display: block;
+    border: 3px solid darkblue;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 /*cabinet*/
 
@@ -175,3 +193,5 @@ textarea{
     line-height: 18px;
     padding-bottom: 8px;
 }
+
+/*news*/
