@@ -43,6 +43,7 @@ class UsersModel extends BaseModel
                     $_SESSION['user']['username'] = $users[0]['username'];
                     $_SESSION['user']['login'] = $users[0]['login'];
                     $_SESSION['user']['is_admin'] = ($users[0]['is_admin'] == '1');
+                    $_SESSION['user']['avatar'] = $users[0]['avatar'];
                     $result = true;
                 } else {
                     $error_message .= "Неверный логин или пароль! <br>";

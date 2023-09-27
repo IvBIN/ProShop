@@ -20,6 +20,7 @@
             <div class="cabinet_content">
                 <div class="page-content-inner">
                     <h2>Мой профиль</h2>
+                    <div class="profile_items">
                     <div class="profile-block">
                         <div class="alert alert-danger <?= !empty($error_message) ? null : 'hidden' ?>">
                             <?= !empty($error_message) ? $error_message : null ?>
@@ -73,7 +74,8 @@
                         </div>
                     </div>
                     <div class="avatar">
-                        <img src="data:<?= $users[0]['type']?>;base64, <?=$users[0]['avatar']?>" alt="avatar">
+                        <img src="data:image/png; base64, <?=$_SESSION['user']['avatar']?>" alt="avatar">
+                    </div>
                     </div>
                 </div>
             </div>
