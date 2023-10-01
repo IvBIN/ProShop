@@ -31,6 +31,11 @@ class UserOperations
             'link' => '/news/list'
         ];
 
+        $list[] = [
+            'title' => 'Товары',
+            'link' => '/products/list'
+        ];
+
         if ($role === self::RoleAdmin) {
             $list[] = [
                 'title' => 'Пользователи',

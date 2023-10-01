@@ -36,7 +36,8 @@ class ProductsModels extends BaseModel
                     'description' => $products_data['description'],
                     'price' => $products_data['price'],
                     'count' => $products_data['count'],
-                    'cover' => $products_data['cover'],
+//                    'cover' => $products_data['cover'],
+                    'cover' => $_FILES['cover'],
                     'user_id' => $_SESSION['user']['id'],
                 ]
             );
