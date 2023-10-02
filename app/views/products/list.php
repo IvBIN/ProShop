@@ -43,7 +43,8 @@ use app\lib\UserOperations;
                                         <div class="products-description"><?=$item['description']?></div>
                                         <div class="products-price"><?=$item['price']?></div>
                                         <div class="products-count"><?=$item['count']?></div>
-                                        <div class="products-cover"><?=$item['cover']?></div>
+                                        <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
+
 
 
                                     </div>

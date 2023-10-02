@@ -5,10 +5,10 @@ use app\core\BaseModel;
 
 class ProductsModels extends BaseModel
 {
-    public function add($products_data)
+    public function add($products_data, $cover)
     {
-        $cover = file_get_contents($cover);
-        $cover = base64_encode($cover);
+        $cover = base64_encode(file_get_contents($cover));
+
 
         $result = false;
         $error_message = '';
@@ -24,7 +24,7 @@ class ProductsModels extends BaseModel
         if (empty($products_data['count'])) {
             $error_message .= "Введите количество! <br>";
         }
-        if (empty($products_data['cover'])) {
+        if (empty($cover)) {
             $error_message .= "Вложите изображение! <br>";
         }
         if (empty($error_message)) {
@@ -36,8 +36,7 @@ class ProductsModels extends BaseModel
                     'description' => $products_data['description'],
                     'price' => $products_data['price'],
                     'count' => $products_data['count'],
-//                    'cover' => $products_data['cover'],
-                    'cover' => $_FILES['cover'],
+                    'cover' => $cover,
                     'user_id' => $_SESSION['user']['id'],
                 ]
             );
@@ -60,11 +59,12 @@ class ProductsModels extends BaseModel
         return $result;
     }
 
-    public function edit($products_id, $products_data)
+    public function edit($products_id, $products_data, $cover)
     {
+        $cover = base64_encode(file_get_contents($cover));
+
         $result = false;
         $error_message = '';
-
         if (empty($products_id)) {
             $error_message .= "Отсутствует идентификатор записи! <br>";
         }
@@ -80,20 +80,20 @@ class ProductsModels extends BaseModel
         if (empty($products_data['count'])) {
             $error_message .= "Введите количество! <br>";
         }
-        if (empty($products_data['cover'])) {
+        if (empty($cover)) {
             $error_message .= "Вложите изображение! <br>";
         }
 
         if (empty($error_message)) {
             $result = $this ->update(
                 "UPDATE products SET title = :title, description = :description,
-                    price =:price, count =:count, cover =:cover where id = :id",
+                    price = :price, count = :count, cover = :cover where id = :id",
                 [
                     'title' => $products_data['title'],
                     'description' => $products_data['description'],
                     'price' => $products_data['price'],
                     'count' => $products_data['count'],
-                    'cover' => $products_data['cover'],
+                    'cover' => $cover,
                     'id' => $products_id,
                 ]
             );

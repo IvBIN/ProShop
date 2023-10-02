@@ -21,7 +21,7 @@
             <div class="cabinet_content">
                 <dib class="page-content-inner">
                     <h2>Редактирование Товара</h2>
-                    <form method="post" name="products_add_form">
+                    <form method="post" name="products_add_form" enctype="multipart/form-data">
                         <div class="products_add_form">
                             <div class="alert alert-danger <?= !empty($error_message) ? null : 'hidden' ?>">
                                 <?= !empty($error_message) ? $error_message : null ?>
@@ -96,7 +96,7 @@
 
                                 <div class="button_box">
                                     <button type="submit"
-                                            name="btn_news_edit_form"
+                                            name="btn_products_edit_form"
                                             id="btnNewsEditForm"
                                             class="btn btn-primary"
                                             value="1"

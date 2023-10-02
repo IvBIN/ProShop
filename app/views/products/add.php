@@ -20,7 +20,7 @@
             <div class="cabinet_content">
                 <dib class="page-content-inner">
                     <h2>Добавление Товара</h2>
-                    <form method="post" name="products_add_form">
+                    <form method="post" name="products_add_form" enctype="multipart/form-data">
                         <div class="products_add_form">
                             <div class="alert alert-danger <?= !empty($error_message) ? null : 'hidden' ?>">
                                 <?= !empty($error_message) ? $error_message : null ?>
