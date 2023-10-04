@@ -41,9 +41,10 @@ use app\lib\UserOperations;
                                             <?php endif ?>
                                         </h3>
                                         <div class="products-description"><?=$item['description']?></div>
-                                        <div class="products-price"><?=$item['price']?></div>
-                                        <div class="products-count"><?=$item['count']?></div>
+                                        <div class="products-price">Цена (руб): <?=$item['price']?></div>
+                                        <div class="products-count">Количество: <?=$item['count']?></div>
                                         <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
+                                        <a class="btn_buy" href="#">Купить</a>
 
 
 

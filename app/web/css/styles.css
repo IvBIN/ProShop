@@ -82,8 +82,8 @@ textarea{
 
 .cabinet_wrapped {
     display: flex;
-    /*flex-wrap: wrap;*/
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    /*flex-wrap: nowrap;*/
     justify-content: space-between;
     padding: 30px 0 50px;
 }
@@ -99,14 +99,16 @@ textarea{
 
 .cabinet_sidebar .menu_box {
     border: 3px solid #002360;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(224, 185, 152, 0.96);
     border-radius: 10px;
     padding: 15px 10px 20px 15px;
+    margin-bottom: 20px;
 }
 
 .menu_box {
     display: flex;
     justify-content: space-between;
+    background: rgba(236, 131, 15, 0.83);
 }
 
 .menu_box ul {
@@ -115,6 +117,7 @@ textarea{
 
 .menu_box ul li {
     font-size: 18px;
+    font-weight: bold;
     line-height: 22px;
     padding: 12px 0 0;
 }
@@ -184,7 +187,8 @@ textarea{
 
 .news-item{
     border-bottom: 1px solid gray;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
+
 }
 
 .news-item h3 {
@@ -208,27 +212,46 @@ textarea{
 
 /*products*/
 
-.news-item{
+.products-item{
+    margin-top: 20px;
     border-bottom: 1px solid gray;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.news-item h3 {
+.products-item h3 {
     font-size: 20px;
     line-height: 24px;
 }
 
-.news-item h3 span{
+.products-item h3 span{
     font-size: 16px;
     line-height: 18px;
 }
 
 .products-item img {
-    width: 100%;
-    height: 100px;
+    /*width: 100%;*/
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     background: #000;
     border-radius: 5px;
+}
+
+.btn_buy{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 24px;
+    display: block;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    color: blue;
+    padding: 0 20px;
+    /*border: 1px solid gray;*/
+    border-radius: 5px;
+    background: indianred;
 }
 
 /*products*/
