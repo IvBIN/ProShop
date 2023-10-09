@@ -62,7 +62,6 @@ class UsersModel extends BaseModel
     {
         $result = false;
         $error_message = '';
-
         if (empty($current_password)) {
             $error_message .= "Введите текущий пароль!<br>";
         }
@@ -75,19 +74,17 @@ class UsersModel extends BaseModel
         if ($new_password != $confirm_new_password) {
             $error_message .= "Пароли не совпадают!<br>";
         }
-
         if (empty($error_message)) {
             $users = $this->select('select * from users where login = :login', [
-                'login' =>$_SESSION['user']['login']
+                'login' => $_SESSION['user']['login']
             ]);
             if (!empty($users[0])) {
                 $passwordCorrect = password_verify($current_password, $users[0]['password']);
-
                 if ($passwordCorrect) {
                     $new_password = password_hash($new_password, PASSWORD_DEFAULT);
                     $updatePassword = $this->update('update users set password = :password where login = :login', [
-                        'login' =>$_SESSION['user']['login'],
-                        'password' =>$new_password
+                        'login' => $_SESSION['user']['login'],
+                        'password' => $new_password
                     ]);
                     $result = $updatePassword;
                 } else {
@@ -102,35 +99,26 @@ class UsersModel extends BaseModel
             'error_message' => $error_message
         ];
     }
-    public function changeAvatar($current_avatar, $new_avatar)
+
+    public function changeAvatar($new_avatar)
     {
         $result = false;
         $error_message = '';
-        $new_avatar = file_get_contents($new_avatar);
-        $new_avatar = base64_encode($new_avatar);
-        if (empty($current_avatar)) {
+        if (empty($new_avatar)) {
             $error_message .= "Добавьте аватар!<br>";
+        } else {
+            $new_avatar = file_get_contents($new_avatar);
+            $new_avatar = base64_encode($new_avatar);
         }
-
         if (empty($error_message)) {
-            $users = $this->select('select * from users where login = :login', [
-                'login' =>$_SESSION['user']['login']
-            ]);
-            if (!empty($users[0])) {
-                $avatarCorrect = base64_encode($current_avatar, $users[0]['avatar']);
 
-                if ($avatarCorrect) {
-                    $updateAvatar = $this->update('update users set avatar = :avatar where login = :login', [
-                        'login' =>$_SESSION['user']['login'],
-                        'avatar' =>$new_avatar
-                    ]);
-                    $result = $updateAvatar;
-                } else {
-                    $error_message .= "Файл не выбран!<br>";
-                }
-            } else {
-                $error_message .= "Произошла ошибка при смене аватара!<br>";
-            }
+                $updateAvatar = $this->update('update users set avatar = :avatar where login = :login', [
+                    'login' => $_SESSION['user']['login'],
+                    'avatar' => $new_avatar
+                ]);
+                $result = $updateAvatar;
+                $_SESSION['user']['avatar'] = $new_avatar;
+
         }
         return [
             'result' => $result,
@@ -138,14 +126,9 @@ class UsersModel extends BaseModel
         ];
     }
 
-
-
-
-
     public function getListUsers()
     {
         $result = null;
-
         $users = $this->select('select id, username, login, is_admin from users');
         if (!empty($users)) {
             $result = $users;

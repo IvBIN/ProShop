@@ -76,7 +76,8 @@
                                         >Сменить пароль
                                         </button>
                                     </div>
-
+                                </form>
+                                <form method="post" enctype="multipart/form-data">
                                     <div class="input_box">
                                         <label for="avatar">Сменить аватар</label>
                                         <input type="file"
