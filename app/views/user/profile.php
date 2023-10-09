@@ -3,6 +3,14 @@
 ?>
 <div class="page">
     <div class="container">
+        <div class="header">
+            <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
+            <form class="search" method="get">
+                <input type="text" placeholder="Поиск по сайту">
+                <input type="submit" value="Найти">
+            </form>
+
+        </div>
         <div class="cabinet_wrapped">
             <div class="cabinet_sidebar">
                 <?php if (!empty($sidebar)) : ?>
@@ -68,6 +76,26 @@
                                         >Сменить пароль
                                         </button>
                                     </div>
+
+                                    <div class="input_box">
+                                        <label for="avatar">Сменить аватар</label>
+                                        <input type="file"
+                                               name="avatar"
+                                               id="field_avatar"
+                                               class="form-control"
+                                               maxlength="24"
+                                               placeholder="Добавьте новый аватар"
+                                        >
+                                    </div>
+
+                                    <div class="button_box">
+                                        <button type="submit"
+                                                name="btn_change_avatar_form"
+                                                id="btnChangeAvatarForm"
+                                                class="btn btn-primary"
+                                                value="1"
+                                        >Сменить аватар
+                                        </button>
                                 </form>
                             </div>
 

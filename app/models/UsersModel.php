@@ -102,6 +102,45 @@ class UsersModel extends BaseModel
             'error_message' => $error_message
         ];
     }
+    public function changeAvatar($current_avatar, $new_avatar)
+    {
+        $result = false;
+        $error_message = '';
+        $new_avatar = file_get_contents($new_avatar);
+        $new_avatar = base64_encode($new_avatar);
+        if (empty($current_avatar)) {
+            $error_message .= "Добавьте аватар!<br>";
+        }
+
+        if (empty($error_message)) {
+            $users = $this->select('select * from users where login = :login', [
+                'login' =>$_SESSION['user']['login']
+            ]);
+            if (!empty($users[0])) {
+                $avatarCorrect = base64_encode($current_avatar, $users[0]['avatar']);
+
+                if ($avatarCorrect) {
+                    $updateAvatar = $this->update('update users set avatar = :avatar where login = :login', [
+                        'login' =>$_SESSION['user']['login'],
+                        'avatar' =>$new_avatar
+                    ]);
+                    $result = $updateAvatar;
+                } else {
+                    $error_message .= "Файл не выбран!<br>";
+                }
+            } else {
+                $error_message .= "Произошла ошибка при смене аватара!<br>";
+            }
+        }
+        return [
+            'result' => $result,
+            'error_message' => $error_message
+        ];
+    }
+
+
+
+
 
     public function getListUsers()
     {

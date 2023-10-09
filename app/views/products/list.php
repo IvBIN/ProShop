@@ -8,6 +8,14 @@ use app\lib\UserOperations;
 ?>
 <div class="page">
     <div class="container">
+        <div class="header">
+            <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
+            <form class="search" method="get">
+                <input type="text" placeholder="Поиск по сайту">
+                <input type="submit" value="Найти">
+            </form>
+
+        </div>
         <div class="cabinet_wrapped">
             <div class="cabinet_sidebar">
                 <?php if (!empty($sidebar)) : ?>
@@ -34,18 +42,23 @@ use app\lib\UserOperations;
                                 <?php foreach ($products as $item) :?>
                                     <div class="products-item">
                                         <h3>
-                                            <?=$item['title']?><span> от <?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
-                                            <?php if ($role === UserOperations::RoleAdmin) :?>
-                                                (<a href="/products/edit?products_id=<?=$item['id']?>">редактировать</a>
+                                            <?=$item['title']?><br><span> от <?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
+                                            <?php if ($role === UserOperations::RoleAdmin) :?><br>
+                                                (<a href="/products/edit?products_id=<?=$item['id']?>">Редактировать</a>
                                                 <a href="/products/delete?products_id=<?=$item['id']?>">Удалить</a>)
                                             <?php endif ?>
                                         </h3>
-                                        <div class="products-description"><?=$item['description']?></div>
-                                        <div class="products-price">Цена (руб): <?=$item['price']?></div>
-                                        <div class="products-count">Количество: <?=$item['count']?></div>
+                                        <div class="products_info">
+                                            <div class="products-description"><?=$item['description']?></div>
+                                            <div class="products-price"><b>Цена, ₽: <?=$item['price']?><b></div>
+                                            <div class="products-count"><b>Количество: <?=$item['count']?><b></div>
                                         <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
-                                        <a class="btn_buy" href="#">Купить</a>
-
+                                        </div>
+<!--                                        <a class="btn_buy" href="#">Купить</a>-->
+                                        <form class="btn_buy" action="../php/add_cart.php" method="post">
+                                            <input class="btn_sub" type="text" value="<?php echo $_GET['id'] ?>" name="id_item" style="display: none">
+                                            <input class="btn_name" type="submit" value="Купить">
+                                        </form>
 
 
                                     </div>

@@ -57,6 +57,21 @@ class UserController extends InitController
                 $error_message = $result_auth['error_message'];
             }
         }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['btn_change_avatar_form'])){
+            $avatar = !empty($_FILES['avatar']['tmp_name']) ? $_FILES['avatar']['tmp_name'] : null;
+            $new_avatar = !empty($_FILES['new_avatar']['tmp_name']) ? $_FILES['new_avatar']['tmp_name'] : null;
+
+            $userModel = new UsersModel();
+            $result_auth = $userModel->changeAvatar(
+                $avatar, $new_avatar
+            );
+            if ($result_auth['result']) {
+                $this->redirect('/user/profile');
+            } else {
+                $error_message = $result_auth['error_message'];
+            }
+        }
+
         $this->render('profile', [
             'sidebar' =>UserOperations::getMenuLinks(),
             'error_message' => $error_message

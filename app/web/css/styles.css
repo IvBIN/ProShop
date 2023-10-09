@@ -3,7 +3,8 @@
     padding: 0;
     margin: 0;
     outline: none;
-    background: rgba(224, 185, 152, 0.96);     /*не работает/*/
+    /*background: rgba(224, 185, 152, 0.96);     !*не работает!*/
+    background: rgba(150, 222, 179, 0.96);
 }
 
 html {
@@ -77,6 +78,31 @@ textarea{
 .links_box {
     padding-bottom: 17px;
 }
+/*header*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 20px;
+    /*border: 1px solid red;*/
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: #fffd7f;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+    align-items: center;
+}
+.logo, .search {
+    background: none;
+    margin-left: 20px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+.search {
+    margin-right: 20px;
+}
+
+
+/*header*/
+
 
 /*cabinet*/
 
@@ -86,18 +112,21 @@ textarea{
     /*flex-wrap: nowrap;*/
     justify-content: space-between;
     padding: 30px 0 50px;
+    flex-direction: row;
 }
 
 .cabinet_wrapped .cabinet_sidebar {
-    /*width: 240px;*/
-    width: 765px;
+    width: 240px;
+    background: none;
 }
 
 .cabinet_wrapped .cabinet_content {
     width: 765px;
+    background: white;
 }
 
 .cabinet_sidebar .menu_box {
+
     border: 3px solid #002360;
     background: rgba(224, 185, 152, 0.96);
     border-radius: 10px;
@@ -108,11 +137,13 @@ textarea{
 .menu_box {
     display: flex;
     justify-content: space-between;
-    background: rgba(236, 131, 15, 0.83);
+
+
 }
 
 .menu_box ul {
     list-style: none;
+    background: rgba(224, 185, 152, 0.96);
 }
 
 .menu_box ul li {
@@ -120,6 +151,7 @@ textarea{
     font-weight: bold;
     line-height: 22px;
     padding: 12px 0 0;
+    background: rgba(224, 185, 152, 0.96);
 }
 
 .menu_box ul li:first-child {
@@ -129,10 +161,12 @@ textarea{
 .menu_box ul li a {
     color: #002360;
     text-decoration: none;
+    background: rgba(224, 185, 152, 0.96);
 }
 
 .menu_box ul li a:hover {
     text-decoration: underline;
+
 }
 
 .profile_items {
@@ -153,6 +187,7 @@ textarea{
     font-size: 24px;
     line-height: 26px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .avatar {
@@ -216,16 +251,20 @@ textarea{
     margin-top: 20px;
     border-bottom: 1px solid gray;
     margin-bottom: 20px;
+    background: bisque;
+    padding-left: 10px;
 }
 
 .products-item h3 {
     font-size: 20px;
     line-height: 24px;
+    background: bisque;
 }
 
-.products-item h3 span{
+.products-item h3 span, .products_info {
     font-size: 16px;
     line-height: 18px;
+    background: bisque;
 }
 
 .products-item img {
@@ -237,7 +276,7 @@ textarea{
     border-radius: 5px;
 }
 
-.btn_buy{
+.btn_buy, .btn_name{
     margin-top: 10px;
     margin-bottom: 20px;
     text-decoration: none;

@@ -7,6 +7,14 @@ use app\lib\UserOperations;
 ?>
 <div class="page">
     <div class="container">
+        <div class="header">
+            <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
+            <form class="search" method="get">
+                <input type="text" placeholder="Поиск по сайту">
+                <input type="submit" value="Найти">
+            </form>
+
+        </div>
         <div class="cabinet_wrapped">
             <div class="cabinet_sidebar">
                 <?php if (!empty($sidebar)) : ?>
