@@ -54,8 +54,8 @@ use app\lib\UserOperations;
                                             <div class="products-count"><b>Количество: <?=$item['count']?><b></div>
                                         <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
                                         </div>
-<!--                                        <a class="btn_buy" href="#">Купить</a>-->
-                                        <form class="btn_buy" action="../php/add_cart.php" method="post">
+
+                                        <form class="btn_buy" action="../products/add_cart.php" method="post">
                                             <input class="btn_sub" type="text" value="<?php echo $_GET['id'] ?>" name="id_item" style="display: none">
                                             <input class="btn_name" type="submit" value="Купить">
                                         </form>

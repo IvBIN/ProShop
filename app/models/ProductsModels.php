@@ -140,4 +140,27 @@ class ProductsModels extends BaseModel
         ];
     }
 
+    public function soldProduct($products_id, $count){
+        $result = false;
+        $error_message = '';
+
+
+        if (empty($products_id)) {
+            $error_message .= "Отсутствует идентификатор записи! <br>";
+        }
+
+        if (empty($error_message)) {
+            $result = $this->update("UPDATE products SET count = :count WHERE id = :id",
+                [
+//                    'id' => $products_id,
+                    'count' =>$count,
+                ]
+            );
+        }
+
+        return [
+            'result' => $result,
+            'error_message' => $error_message
+        ];
+    }
 }
