@@ -55,10 +55,12 @@ use app\lib\UserOperations;
                                         <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
                                         </div>
 
-                                        <form class="btn_buy" action="../products/add_cart.php" method="post">
-                                            <input class="btn_sub" type="text" value="<?php echo $_GET['id'] ?>" name="id_item" style="display: none">
-                                            <input class="btn_name" type="submit" value="Купить">
-                                        </form>
+                                        <a href="/products/add_cart?id=<?php echo $item['id'] ?>">Купить</a>
+
+<!--                                        <form class="btn_buy" method="post">-->
+<!--                                            <input class="btn_sub" type="text" value="--><?php //echo $_GET['id'] ?><!--" name="id_item" style="display: none">-->
+<!--                                            <input class="btn_name" type="submit" value="Купить">-->
+<!--                                        </form>-->
 
 
                                     </div>

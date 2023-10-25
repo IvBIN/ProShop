@@ -140,7 +140,7 @@ class ProductsModels extends BaseModel
         ];
     }
 
-    public function soldProduct($products_id, $count){
+    public function soldProduct($products_id){
         $result = false;
         $error_message = '';
 
@@ -150,10 +150,10 @@ class ProductsModels extends BaseModel
         }
 
         if (empty($error_message)) {
-            $result = $this->update("UPDATE products SET count = :count WHERE id = :id",
+            $result = $this->update("UPDATE products SET count = count -1 WHERE id = :id",
                 [
-//                    'id' => $products_id,
-                    'count' =>$count,
+                    'id' => $products_id,
+//                    'count' =>$count,
                 ]
             );
         }

@@ -2,6 +2,7 @@
 /** @var array $sidebar - Меню */
 /** @var string $role - Список товаров */
 /** @var array $products - Роль пользователя */
+/** @var array $item - Роль пользователя */
 ?>
 <div class="page">
     <div class="container">
@@ -111,14 +112,14 @@
                         <span class="buy_info">Вами приобретено:</span><br>
                         <?php if(!empty($item)){
                             foreach ($item as $prod){
-                                echo select('SELECT title FROM products WHERE id =:item_id',
-                                ['item_id'=>$prod['id_item']])[0]['title'];
-                                echo '-';
-                                echo select('SELECT price FROM products WHERE id =:item_id',
-                                ['item_id'=>$prod['id_item']])[0]['price'].'<br>';
-                                echo '-';
-                                echo select('SELECT count FROM products WHERE id =:item_id',
-                                ['item_id'=>$prod['id_item']])[0]['count'].'<br>';
+//                                echo select('SELECT title FROM products WHERE id =:item_id',
+//                                ['item_id'=>$prod['id_item']])[0]['title'];
+//                                echo '-';
+//                                echo select('SELECT price FROM products WHERE id =:item_id',
+//                                ['item_id'=>$prod['id_item']])[0]['price'].'<br>';
+//                                echo '-';
+//                                echo select('SELECT count FROM products WHERE id =:item_id',
+//                                ['item_id'=>$prod['id_item']])[0]['count'].'<br>';
                             }
                         }?>
                     </div>

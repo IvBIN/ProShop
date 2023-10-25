@@ -72,8 +72,12 @@ class UserController extends InitController
             }
         }
 
+        $userModel = new UsersModel();
+        $item = $userModel->getListItem();
+
         $this->render('profile', [
             'sidebar' =>UserOperations::getMenuLinks(),
+            'item' => $item,
             'error_message' => $error_message
         ]);
 

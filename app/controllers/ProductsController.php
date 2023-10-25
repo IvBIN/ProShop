@@ -69,6 +69,8 @@ class ProductsController extends InitController
         ]);
     }
 
+
+
     public function actionEdit()
     {
         $this->view->title = 'Редактирование товара';
