@@ -112,6 +112,13 @@
                         <span class="buy_info">Вами приобретено:</span><br>
                         <?php if(!empty($item)){
                             foreach ($item as $prod){
+                                echo select('SELECT title = :title,price = :price, count = :count FROM products WHERE id =:item_id',
+                                ['item_id'=>$prod['id_item']], ['item_id'=>$prod['id_item']],['item_id'=>$prod['id_item']])
+                                    [0]['title'].'<br>',
+                                    [0]['price'].'<br>',
+                                    [0]['count'].'<br>';
+
+
 //                                echo select('SELECT title FROM products WHERE id =:item_id',
 //                                ['item_id'=>$prod['id_item']])[0]['title'];
 //                                echo '-';

@@ -136,4 +136,9 @@ class ProductsController extends InitController
             'error_message' => $error_message
         ]);
     }
+
+    public function actionAdd_Cart()
+    {
+
+    }
 }
