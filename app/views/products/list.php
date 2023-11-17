@@ -35,7 +35,7 @@ use app\lib\UserOperations;
                     <h2>Товары</h2>
                     <div class="products-block">
                         <div class="links_box text-end">
-                            <a href="/products/add">Добавить</a>
+                            <a href="/products/add" class="btn_add">Добавить</a>
                         </div>
                         <?php if (!empty($products)) : ?>
                             <div class="products-list">

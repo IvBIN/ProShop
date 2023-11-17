@@ -138,6 +138,12 @@ class UsersModel extends BaseModel
 
     public function getListItem()
     {
+        $result = null;
+        $item = $this->select('select id_item from cart where user_id');
+        if (!empty($products)) {
+            $result = $item;
+        }
+        return $result;
         
     }
 }

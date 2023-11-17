@@ -73,6 +73,11 @@ textarea{
     line-height: 20px;
     padding: 6px;
     width: 100%;
+    text-decoration: none;
+}
+
+.button_box:hover{
+    color: red;
 }
 
 .links_box {
@@ -165,7 +170,10 @@ textarea{
 }
 
 .menu_box ul li a:hover {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    /*text-decoration: red;*/
+    color: red;
+    font-size: 25px;
 
 }
 
@@ -246,7 +254,15 @@ textarea{
 /*news*/
 
 /*products*/
-
+.btn_add{
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+}
+.btn_add:hover{
+    font-size: 25px;
+    color: red;
+}
 .products-item{
     margin-top: 20px;
     border-bottom: 1px solid gray;

@@ -139,6 +139,30 @@ class ProductsController extends InitController
 
     public function actionAdd_Cart()
     {
-
+        $this->view->title = 'Приобретение товара';
+        $products_id = !empty($_GET['products_id']) ? $_GET['products_id'] : null;
+        $products = null;
+        $error_message = '';
+        if (!empty($products_id)) {
+            $products_model = new ProductsModels();
+            $products = $products_model->getProductsById($products_id);
+            if (!empty($products)) {
+                $result_sold = $products_model->soldProduct($products_id);
+                if ($result_sold['result']) {
+                    $this->redirect('/products/list');
+                } else {
+                    $error_message = $result_sold['error_message'];
+                }
+            } else {
+                $error_message = 'Товар не найден!';
+            }
+        } else {
+            $error_message = 'Отсутствует идентификатор записи!';
+        }
+        $this->render('sold', [
+            'sidebar' => UserOperations::getMenuLinks(),
+            'products' => $products,
+            'error_message' => $error_message
+        ]);
     }
 }
