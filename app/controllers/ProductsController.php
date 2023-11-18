@@ -6,6 +6,8 @@ use app\core\InitController;
 use app\lib\UserOperations;
 use app\models\ProductsModels;
 
+use app\core\BaseModel;
+
 class ProductsController extends InitController
 {
     public function behaviors()
@@ -23,6 +25,13 @@ class ProductsController extends InitController
                     [
                         'actions' => ['add', 'edit', 'delete'],
                         'roles' => [UserOperations::RoleAdmin],
+                        'matchCallback' => function () {
+                            $this->redirect('/products/list');
+                        }
+                    ],
+                    [
+                        'actions' => ['addCart'],
+                        'roles' => [UserOperations::RoleUser, UserOperations::RoleAdmin],
                         'matchCallback' => function () {
                             $this->redirect('/products/list');
                         }
@@ -137,10 +146,10 @@ class ProductsController extends InitController
         ]);
     }
 
-    public function actionAdd_Cart()
+    public function actionAddCart()
     {
         $this->view->title = 'Приобретение товара';
-        $products_id = !empty($_GET['products_id']) ? $_GET['products_id'] : null;
+        $products_id = !empty($_GET['id']) ? $_GET['id'] : null;
         $products = null;
         $error_message = '';
         if (!empty($products_id)) {
@@ -159,9 +168,7 @@ class ProductsController extends InitController
         } else {
             $error_message = 'Отсутствует идентификатор записи!';
         }
-        $this->render('sold', [
-            'sidebar' => UserOperations::getMenuLinks(),
-            'products' => $products,
+        $this->render('addCart', [
             'error_message' => $error_message
         ]);
     }

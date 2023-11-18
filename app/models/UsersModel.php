@@ -111,14 +111,12 @@ class UsersModel extends BaseModel
             $new_avatar = base64_encode($new_avatar);
         }
         if (empty($error_message)) {
-
-                $updateAvatar = $this->update('update users set avatar = :avatar where login = :login', [
-                    'login' => $_SESSION['user']['login'],
-                    'avatar' => $new_avatar
-                ]);
-                $result = $updateAvatar;
-                $_SESSION['user']['avatar'] = $new_avatar;
-
+            $updateAvatar = $this->update('update users set avatar = :avatar where login = :login', [
+                'login' => $_SESSION['user']['login'],
+                'avatar' => $new_avatar
+            ]);
+            $result = $updateAvatar;
+            $_SESSION['user']['avatar'] = $new_avatar;
         }
         return [
             'result' => $result,
@@ -136,14 +134,24 @@ class UsersModel extends BaseModel
         return $result;
     }
 
-    public function getListItem()
+    public function getItemId()
     {
         $result = null;
-        $item = $this->select('select id_item from cart where user_id');
-        if (!empty($products)) {
+        $item = $this->select('select id_item from cart where user_id = :user_id', ["user_id" => $_SESSION['user']['id']]);
+        if (!empty($item)) {
             $result = $item;
         }
         return $result;
-        
+    }
+
+    public function getListItem($item)
+    {
+        $allProd = [];
+        foreach ($item as $prod) {
+            $allProd[] = $this->select("SELECT title, price, cart.count FROM products JOIN cart ON cart.id_item = products.id WHERE products.id = :id", [
+                'id' => $prod['id_item']
+            ]);
+        }
+        return $allProd;
     }
 }

@@ -55,7 +55,7 @@ use app\lib\UserOperations;
                                         <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
                                         </div>
 
-                                        <a href="/products/add_cart?id=<?php echo $item['id'] ?>">Купить</a>
+                                        <a href="/products/addCart?id=<?php echo $item['id'] ?>">Купить</a>
 
 <!--                                        <form class="btn_buy" method="post">-->
 <!--                                            <input class="btn_sub" type="text" value="--><?php //echo $_GET['id'] ?><!--" name="id_item" style="display: none">-->

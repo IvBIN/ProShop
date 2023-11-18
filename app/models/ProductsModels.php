@@ -140,22 +140,50 @@ class ProductsModels extends BaseModel
         ];
     }
 
+    public function test()
+    {
+        $resultDatabase = $this->update("UPDATE products SET count = count -1 WHERE id = :id",
+            [
+                'id' => 4
+            ]
+        );
+        return $resultDatabase;
+    }
+
     public function soldProduct($products_id){
         $result = false;
         $error_message = '';
 
+        $countProd = $this->select('SELECT count FROM products WHERE id = :id', [
+            'id' => $products_id
+        ]);
 
-        if (empty($products_id)) {
-            $error_message .= "Отсутствует идентификатор записи! <br>";
-        }
-
-        if (empty($error_message)) {
-            $result = $this->update("UPDATE products SET count = count -1 WHERE id = :id",
+        if ($countProd >= 1) {
+            $resultDatabase = $this->update("UPDATE products SET count = count -1 WHERE id = :id",
                 [
-                    'id' => $products_id,
-//                    'count' =>$count,
+                    'id' => $products_id
                 ]
             );
+            if ($resultDatabase == 1) {
+                $isExist = $this->select("SELECT id FROM cart WHERE id_item = :products_id", [
+                    'products_id' => $products_id
+                ]);
+                if (!empty($isExist)) {
+                    $this->update("UPDATE cart SET count = count + 1 WHERE id_item = :products_id", [
+                        'products_id' => $products_id
+                    ]);
+                } else {
+                    $this->insert("INSERT INTO cart (id_item, user_id) VALUES (:products_id, :user_id)",[
+                        'products_id' => $products_id,
+                        'user_id' => $_SESSION['user']['id']
+                    ]);
+                }
+                $result = true;
+            } else {
+                $error_message .= "Произошла ошибка!";
+            }
+        } else {
+            $error_message .= "Товар отсутвует";
         }
 
         return [
