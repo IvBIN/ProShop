@@ -4,7 +4,11 @@
     margin: 0;
     outline: none;
     /*background: rgba(224, 185, 152, 0.96);     !*не работает!*/
-    background: rgba(150, 222, 179, 0.96);
+    /*background: rgba(150, 222, 179, 0.96);*/
+    /*background: #002360;*/
+    background-color: #002360;
+    background: url("../app/views/images/BGpart.png");
+    background-repeat:repeat;
 }
 
 html {
@@ -255,31 +259,84 @@ textarea{
 
 /*products*/
 .btn_add{
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
     line-height: 28px;
     text-align: center;
+    text-decoration: none;
+    margin: 5px auto;
+    padding: 5px;
+    background: linear-gradient(0, #FFE4C4FF, #96DEB3F4);
+    box-shadow: 0 5px 14px #3a4156;
+    border-radius: 3px;
 }
 .btn_add:hover{
-    font-size: 25px;
+    font-size: 23px;
+    font-weight: bold;
     color: red;
+    text-decoration: none;
+    margin: 5px auto;
+    padding: 5px;
+    background: linear-gradient(0, #96DEB3F4, #FFE4C4FF);
+    box-shadow: 0 5px 14px #3a4156;
+    border-radius: 3px;
 }
 .products-item{
+    font-weight: bold;
     margin-top: 20px;
-    border-bottom: 1px solid gray;
+    padding: 5px;
+    /*border-bottom: 1px solid gray;*/
+    border: 1px solid red;
     margin-bottom: 20px;
     background: bisque;
     padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 5px 14px #3a4156;
 }
 
-.products-item h3 {
+/*.products-item h3{*/
+/*    font-size: 20px;*/
+/*    line-height: 24px;*/
+/*    background: bisque;*/
+/*}*/
+
+.products-item span a{
     font-size: 20px;
     line-height: 24px;
     background: bisque;
+    display: flex;
+    justify-content: left;
+}
+.products-item a{
+    /*font-size: 20px;*/
+    /*line-height: 24px;*/
+    text-decoration: none;
+    width: min-content;
+    height: min-content;
+    padding: 5px;
+    background: bisque;
+    display: flex;
+    justify-content: left;
+    border: 1px solid gray;
+    border-radius: 3px;
+    box-shadow: 0 5px 14px #3a4156;
+    margin: 5px auto;
 }
 
-.products-item h3 span, .products_info {
+.products-item a:hover{
+    font-size: 20px;
+    line-height: 24px;
+    color: red;
+    text-decoration: none;
+    background:transparent;
+}
+
+.products-count, .products-price, .products-description {
     font-size: 16px;
+    font-weight: bold;
     line-height: 18px;
+    color: red;
     background: bisque;
 }
 
@@ -290,6 +347,7 @@ textarea{
     object-fit: cover;
     background: #000;
     border-radius: 5px;
+    margin-top: 5px;
 }
 
 .btn_buy, .btn_name{
