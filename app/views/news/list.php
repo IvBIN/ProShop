@@ -11,8 +11,8 @@ use app\lib\UserOperations;
         <div class="header">
             <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
             <form class="search" method="get">
-                <input type="text" placeholder="Поиск по сайту">
-                <input type="submit" value="Найти">
+                <input class="text_input" type="text" placeholder="Поиск по сайту">
+                <input class="submit_input" type="submit" value="Найти">
             </form>
 
         </div>
@@ -35,7 +35,7 @@ use app\lib\UserOperations;
                     <h2>Новости</h2>
                     <div class="news-block">
                         <div class="links_box text-end">
-                            <a href="/news/add">Добавить</a>
+                            <a href="/news/add" class="btn_add">Добавить</a>
                         </div>
                         <?php if (!empty($news)) : ?>
                         <div class="news-list">
@@ -44,7 +44,7 @@ use app\lib\UserOperations;
                                     <h3>
                                         <?=$item['title']?><span> от <?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
                                         <?php if ($role === UserOperations::RoleAdmin) :?>
-                                        (<a href="/news/edit?news_id=<?=$item['id']?>">редактировать</a>
+                                        (<a href="/news/edit?news_id=<?=$item['id']?>">Редактировать</a>
                                             <a href="/news/delete?news_id=<?=$item['id']?>">Удалить</a>)
                                         <?php endif ?>
                                     </h3>

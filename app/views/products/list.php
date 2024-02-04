@@ -11,8 +11,8 @@ use app\lib\UserOperations;
         <div class="header">
             <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
             <form class="search" method="get">
-                <input type="text" placeholder="Поиск по сайту">
-                <input type="submit" value="Найти">
+                <input class="text_input" type="text" placeholder="Поиск по сайту">
+                <input class="submit_input" type="submit" value="Найти">
             </form>
 
         </div>
@@ -42,7 +42,7 @@ use app\lib\UserOperations;
                                 <?php foreach ($products as $item) :?>
                                     <div class="products-item">
                                         <span>
-                                            <?=$item['title']?><br><span> Добавлено <?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
+                                            <?=$item['title']?><br><br><span class="span_add"> Добавлено <br><?= date('d.m.Y H:i:s',strtotime($item['date_create']))?></span>
                                             <?php if ($role === UserOperations::RoleAdmin) :?><br>
                                                 <a href="/products/edit?products_id=<?=$item['id']?>">Редактировать</a>
                                                 <a href="/products/delete?products_id=<?=$item['id']?>">Удалить</a>
@@ -52,10 +52,19 @@ use app\lib\UserOperations;
                                             <div class="products-description"><?=$item['description']?></div>
                                             <div class="products-price">Цена, ₽: <?=$item['price']?></div>
                                             <div class="products-count">Количество: <?=$item['count']?></div>
-                                        <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
+                                            <div class="img_box">
+                                                <img src="data:image/png; base64,<?=$item['cover']?>" alt="cover">
+                                            </div>
+
+<!--                                            <img src="data:image/png; base64,--><?php //=$item['cover']?><!--" alt="cover">-->
+                                        </div>
+                                        <div class="buy_act">
+                                            <a class="b_buy" href="/products/addCart?id=<?php echo $item['id'] ?>">Купить</a>
                                         </div>
 
-                                        <a href="/products/addCart?id=<?php echo $item['id'] ?>">Купить</a>
+
+
+
 
                                     </div>
                                 <?php endforeach; ?>
