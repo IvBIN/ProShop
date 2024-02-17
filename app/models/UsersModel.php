@@ -148,8 +148,9 @@ class UsersModel extends BaseModel
     {
         $allProd = [];
         foreach ($item as $prod) {
-            $allProd[] = $this->select("SELECT title, price, cart.count FROM products JOIN cart ON cart.id_item = products.id WHERE products.id = :id", [
-                'id' => $prod['id_item']
+            $allProd[] = $this->select("SELECT title, price, cart.count FROM products JOIN cart ON cart.id_item = products.id WHERE products.id = :id AND cart.user_id = :user_id", [
+                'id' => $prod['id_item'],
+                'user_id' => $_SESSION['user']['id']
             ]);
         }
         return $allProd;

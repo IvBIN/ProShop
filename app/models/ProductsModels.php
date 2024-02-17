@@ -165,12 +165,14 @@ class ProductsModels extends BaseModel
                 ]
             );
             if ($resultDatabase == 1) {
-                $isExist = $this->select("SELECT id FROM cart WHERE id_item = :products_id", [
-                    'products_id' => $products_id
+                $isExist = $this->select("SELECT id FROM cart WHERE id_item = :products_id and user_id = :user", [
+                    'products_id' => $products_id,
+                    'user' => $_SESSION['user']['id']
                 ]);
                 if (!empty($isExist)) {
-                    $this->update("UPDATE cart SET count = count + 1 WHERE id_item = :products_id", [
-                        'products_id' => $products_id
+                    $this->update("UPDATE cart SET count = count + 1 WHERE id_item = :products_id and user_id = :user", [
+                        'products_id' => $products_id,
+                        'user' => $_SESSION['user']['id']
                     ]);
                 } else {
                     $this->insert("INSERT INTO cart (id_item, user_id) VALUES (:products_id, :user_id)",[
