@@ -8,7 +8,7 @@ use app\lib\UserOperations;
 <div class="page">
     <div class="container">
         <div class="header">
-            <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
+            <img class="logo" src="/app/web/images/Logo_Proshop2.png" alt="logo">
             <form class="search" method="get">
                 <input type="text" placeholder="Поиск по сайту">
                 <input type="submit" value="Найти">

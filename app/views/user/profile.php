@@ -7,7 +7,7 @@
 <div class="page">
     <div class="container">
         <div class="header">
-            <img class="logo" src="/app/views/images/Logo_Proshop2.png" alt="logo">
+            <img class="logo" src="/app/web/images/Logo_Proshop2.png" alt="logo">
             <form class="search" method="get">
                 <input class="text_input" type="text" placeholder="Поиск по сайту">
                 <input class="submit_input" type="submit" value="Найти">
